@@ -9,7 +9,7 @@ A microscopic, 0-dep, no bullshit i18n lib
 
 oh yeah btw theres a bug on [line 29](https://github.com/doot0/transgator/blob/develop/transgator.js#L29), if you want to fix it be my guest
 
-notes: you MUST specify your lang on the html attribute or you're a silly person.
+notes: you don't *have* to specify your lang on the html attribute, but if you don't you're a silly person.
 you must name your translation JSON files with valid HTML lang attrs as a result. 
 this lib does some cool trix and has no dependencies. screw your jquery.
 
