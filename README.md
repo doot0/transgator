@@ -7,21 +7,27 @@ A microscopic, 0-dep, no bullshit i18n lib
 4. i suck at explaining things
 5. just look at the example or something
 
-notes: you MUST specify your lang on the html attribute or you're a silly person
+notes: you MUST specify your lang on the html attribute or you're a silly person.
+you must name your translation JSON files with valid HTML lang attrs as a result. 
+this lib does some cool trix and has no dependencies. screw your jquery.
+
+![niiiiice](http://i.imgur.com/7fpJP9o.gif)
 
 ```
+
+<html lang="zh"> ...
 
 <p data-i18n-key="translation_key">default text</p>
 
 <script>
 
-	var transgator_config = {
-		i18n_key : 'data-i18n-key',
-		i18n_dir : '/js/i18n/'
-	}
+  var transgator_config = {
+    i18n_key : 'data-i18n-key',
+    i18n_dir : '/js/i18n/'
+  }
 
-	var lang = document.documentElement.getAttribute('lang');
-	new Transgator(lang, transgator_config);
+  var lang = document.documentElement.getAttribute('lang');
+  new Transgator(lang, transgator_config);
 	
 </script>
 ```
