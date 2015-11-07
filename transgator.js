@@ -51,17 +51,23 @@ transgator.utils = {
 			hashmap[targetKey] = arr;
 		});
 		return hashmap;
+	},
+
+	setLang : function(lang){
+		document.documentElement.setAttribute("lang", lang);
 	}
 
 };
 
-transgator.run = function(translateKeys, hashmap, config){
+transgator.run = function(translateKeys, hashmap, config, lang){
 	var iterate = transgator.utils.forEach;
 	iterate(translateKeys, function(key, val) {
 		if(hashmap[key]) hashmap[key].forEach(function(targetNode) {
 			targetNode.textContent = val;
 		});
 	});
+
+	transgator.utils.setLang(lang);
 };
 
 
@@ -69,7 +75,7 @@ var Transgator = function(config){
 
 	var config = config || {
 		i18n_key: "data-i18n-key",
-		i18n_dir: "./js/i18n/"
+		i18n_dir: "./i18n/"
 	};
 
 	this.config = config;
@@ -88,7 +94,7 @@ Transgator.prototype.lang = function(lang) {
 	var _this = this;
 
 	transgator.utils.getJSON(this.config.i18n_dir + lang).then(function(response) {
-		transgator.run(response, _this.hashmap, _this.config);
+		transgator.run(response, _this.hashmap, _this.config, lang);
 	}, function(error){
 		console.error('Could not fetch translations');
 	});
