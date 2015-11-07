@@ -23,7 +23,7 @@ transgator.utils = {
 
 	},
 
-	getJSON : function(url, callback){
+	getJSON : function(url){
 		return new Promise(function(resolve, reject) {
 			var req = new XMLHttpRequest();
 			req.open('GET', url + ".json");
@@ -49,9 +49,17 @@ transgator.utils = {
 transgator.run = function(translateKeys, config){
 	var translateTargets = document.querySelectorAll("[" + config.i18n_key + "]");
 	var iterate = transgator.utils.forEach;
-	iterate(translateKeys, function(key, val) {
-		document.querySelectorAll(" [" + config.i18n_key + " = "+ key +"] ")[0].textContent = val;
+
+	iterate(translateTargets, function(index, node){
+		var targetNode = node;
+	  var targetKey = node.getAttribute(config.i18n_key);
+		iterate(translateKeys, function(key, val){
+			if(targetKey == key){
+				targetNode.textContent = val;
+			}
+		});
 	});
+
 };
 
 
@@ -69,4 +77,3 @@ var Transgator = function(lang, config){
 	});
 
 };
-
