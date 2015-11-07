@@ -38,5 +38,3 @@ Transgator will fetch the translations using a Promise and will only render them
 
 #### Issues
 - If you're missing translations between files and you change to another language on the fly, any missing values will not change from what they were previously set to. I'll probably address this in the future.
-
-![niiiiice](http://i.imgur.com/7fpJP9o.gif)
