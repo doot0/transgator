@@ -32,7 +32,7 @@ t.lang("en"); //define your target translations.
 t.lang("zh"); //you can change the target translation any time after init.
 ```
 
-Transgator will fetch the translations using a Promise and will only render them when the promise resolves. Keep in mind that you should only intialise Transgator after docready, or your translation hashmap could fail to generate.
+Keep in mind that you should only intialise Transgator after docready, or your translation hashmap could fail to generate.
 
 --
 
