@@ -26,7 +26,7 @@ transgator.utils = {
 	getJSON : function(url, callback){
 		return new Promise(function(resolve, reject) {
 			var req = new XMLHttpRequest();
-			req.open('GET', "./" + url + ".json");
+			req.open('GET', url + ".json");
 
 			req.onload = function() {
 				if(req.status == 200){
