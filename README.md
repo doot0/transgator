@@ -7,7 +7,7 @@ A microscopic, 0-dep, no bullshit i18n lib
 4. i suck at explaining things
 5. just look at the example or something
 
-oh yeah btw theres a bug on [line 29](https://github.com/doot0/transgator/blob/develop/transgator.js#L29), if you want to fix it be my guest
+this project is in its infancy and has some silly bugs. check them out in the [issue tracker](https://github.com/doot0/transgator/issues).
 
 notes: you don't *have* to specify your lang on the html attribute, but if you don't you're a silly person.
 you must name your translation JSON files with valid HTML lang attrs as a result. 
