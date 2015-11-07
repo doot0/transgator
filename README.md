@@ -1,6 +1,6 @@
 # transgator
 
-Transgator is a tiny translation library that has no dependencies (unless your browser sucks) and is pretty easy to use and implement. Browser support is every modern browser except IE, because I'm resolving requests with promises. You can check out [@taylorhakes's promise polyfill](https://github.com/taylorhakes/promise-polyfill) if you need to.
+Transgator is a tiny translation library that has no dependencies and is pretty easy to use and implement. Browser support should be IE9+ and the usual browsers that don't suck.
 
 --
 #### Documentation
