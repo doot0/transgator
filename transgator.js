@@ -20,25 +20,23 @@ transgator.utils = {
 		}
 	},
 
-	getJSON : function(url){
-		return new Promise(function(resolve, reject) {
-			var req = new XMLHttpRequest();
-			req.open('GET', url + ".json");
+	getJSON : function(url, callback){
+		var req = new XMLHttpRequest();
+		req.open('GET', url + ".json");
 
-			req.onload = function() {
-				if(req.status == 200){
-					resolve(JSON.parse(req.response));
-				}else{
-					reject(Error(req.statusText));
-				}
-			};
+		req.onload = function() {
+			if(req.status == 200){
+				callback(null, JSON.parse(req.response));
+			}else{
+				callback(Error(req.statusText));
+			}
+		};
 
-			req.onerror = function() {
-				reject(Error("Network error."));
-			};
+		req.onerror = function() {
+			callback(Error("Network error."));
+		};
 
-			req.send();
-		});
+		req.send();
 	},
 
 	generateHashmap : function(config) {
@@ -93,10 +91,9 @@ Transgator.prototype.lang = function(lang) {
 
 	var _this = this;
 
-	transgator.utils.getJSON(this.config.i18n_dir + lang).then(function(response) {
+	transgator.utils.getJSON(this.config.i18n_dir + lang, function(err, response) {
+		if (err) return console.error('Could not fetch translations');
 		transgator.run(response, _this.hashmap, _this.config, lang);
-	}, function(error){
-		console.error('Could not fetch translations');
 	});
 
 };
