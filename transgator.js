@@ -22,7 +22,7 @@ transgator.utils = {
 
 	getJSON : function(url, callback){
 		var req = new XMLHttpRequest();
-		req.open('GET', url + ".json");
+		req.open('GET', url);
 
 		req.onload = function() {
 			if(req.status == 200){
