@@ -1,0 +1,6 @@
+{
+  "testkey" : "this is an english value",
+  "attr_i18n_1key|value" : "eng i18n",
+  "attr_i18n_2key|value" : "en btn value",
+  "attr_i18n_2key|name"  : "en btn name"
+}

@@ -4,15 +4,13 @@
 	0-dep i18n micro-lib
 
 */
-
 var transgator = transgator || {};
 
 transgator.utils = {
 
-	forEach : function(array, callback, scope){
-		if(!array) return;
-		if ( typeof array === "object" ) {
-			for (var key in array){
+	forEach: function(array, callback, scope) {
+		if (typeof array === "object") {
+			for (var key in array) {
 				if (array.hasOwnProperty(key)) {
 					callback.call(scope, key, array[key]);
 				}
@@ -20,14 +18,14 @@ transgator.utils = {
 		}
 	},
 
-	getJSON : function(url, callback){
+	getJSON: function(url, callback) {
 		var req = new XMLHttpRequest();
 		req.open('GET', url + ".json");
 
 		req.onload = function() {
-			if(req.status == 200){
+			if (req.status == 200) {
 				callback(null, JSON.parse(req.response));
-			}else{
+			} else {
 				callback(Error(req.statusText));
 			}
 		};
@@ -39,37 +37,62 @@ transgator.utils = {
 		req.send();
 	},
 
-	generateHashmap : function(config) {
+	generateHashmap: function(config) {
 		var translateTargets = document.querySelectorAll("[" + config.i18n_key + "]");
 		var hashmap = {};
-		transgator.utils.forEach(translateTargets, function(index, node){
-			var targetKey = node.getAttribute(config.i18n_key);
-			var arr = hashmap[targetKey] || [];
-			arr.push(node);
-			hashmap[targetKey] = arr;
+		var iterate = transgator.utils.forEach;
+
+		transgator.utils.forEach(translateTargets, function(index, node) {
+			var targetKey = node.getAttribute(config.i18n_key),
+          split = targetKey.split("|"),
+				  keyname = split[0],
+				  attributeKeys = split.slice(1);
+
+			if (attributeKeys.length) {
+				attributeKeys.forEach(function(key) {
+          var generatedKey = keyname + '|' + key;
+					var arr = hashmap[generatedKey] || [];
+					arr.push(node);
+					hashmap[generatedKey] = arr;
+				});
+			} else {
+				var arr = hashmap[targetKey] || [];
+				arr.push(node);
+				hashmap[targetKey] = arr;
+			}
+
 		});
 		return hashmap;
 	},
 
-	setLang : function(lang){
+	setLang: function(lang) {
 		document.documentElement.setAttribute("lang", lang);
 	}
 
 };
 
-transgator.run = function(translateKeys, hashmap, config, lang){
+transgator.run = function(translateKeys, hashmap, config, lang) {
 	var iterate = transgator.utils.forEach;
+
 	iterate(translateKeys, function(key, val) {
-		if(hashmap[key]) hashmap[key].forEach(function(targetNode) {
-			targetNode.textContent = val;
+		var attrKey = key.split('|'),
+			nodeKey = hashmap[key],
+			attrName = attrKey[1];
+
+		if(nodeKey) nodeKey.forEach(function(targetNode) {
+			if (attrName !== undefined) {
+				targetNode.setAttribute(attrName, val);
+			} else {
+				targetNode.textContent = val;
+			}
 		});
+
 	});
 
 	transgator.utils.setLang(lang);
 };
 
-
-var Transgator = function(config){
+var Transgator = function(config) {
 
 	var config = config || {
 		i18n_key: "data-i18n-key",
@@ -84,10 +107,10 @@ var Transgator = function(config){
 
 Transgator.prototype.lang = function(lang) {
 
-	if( lang == undefined ){
+	if (lang === undefined) {
 		console.error('Must specify a translation lang');
 		return;
-	};
+	}
 
 	var _this = this;
 

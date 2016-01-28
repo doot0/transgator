@@ -1,0 +1,6 @@
+{
+  "testkey" : "this is a zh value",
+  "attr_i18n_1key|value" : "zh i18n",
+  "attr_i18n_2key|value" : "zh btn value",
+  "attr_i18n_2key|name"  : "zh btn name"
+}
