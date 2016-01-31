@@ -2,5 +2,10 @@
   "testkey" : "this is an english value",
   "attr_i18n_1key|value" : "eng i18n",
   "attr_i18n_2key|value" : "en btn value",
-  "attr_i18n_2key|name"  : "en btn name"
+  "attr_i18n_2key|name"  : "en btn name",
+  "innertext" : "en innertext",
+  "innertext|attrib" : "en attribtext",
+  "innertext2" : "en innertext2",
+  "innertext2|attrib1" : "en attrib1",
+  "innertext2|attrib2" : "en attrib2"
 }

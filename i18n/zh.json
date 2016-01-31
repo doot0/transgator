@@ -1,6 +1,11 @@
 {
-  "testkey" : "this is a zh value",
+  "testkey" : "this is a chinese value",
   "attr_i18n_1key|value" : "zh i18n",
   "attr_i18n_2key|value" : "zh btn value",
-  "attr_i18n_2key|name"  : "zh btn name"
+  "attr_i18n_2key|name"  : "zh btn name",
+  "innertext" : "zh innertext",
+  "innertext|attrib" : "zh attribtext",
+  "innertext2" : "zh innertext2",
+  "innertext2|attrib1" : "zh attrib1",
+  "innertext2|attrib2" : "zh attrib2"
 }
