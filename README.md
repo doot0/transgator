@@ -1,6 +1,6 @@
 # transgator
 
-Transgator is a tiny translation library that has no dependencies and is pretty easy to use and implement. Browser support should be IE9+ and the usual browsers that don't suck.
+Transgator is a tiny (1.4kb minified) translation library that has no dependencies and is pretty easy to use and implement. Browser support should be IE9+ and the usual browsers that don't suck.
 
 ## Documentation
 
