@@ -4,7 +4,8 @@ var gulp    = require('gulp'),
 
 var paths = {
   src : './src/transgator.js',
-  dist: './dist/'
+  dist: './dist/',
+  root: './'
 };
 
 gulp.task('js', function(){
@@ -15,6 +16,14 @@ gulp.task('js', function(){
   .pipe(gulp.dest(
     paths.dist
   ))
+});
+
+gulp.task('build', function(){
+  gulp
+  .src(paths.src)
+  .pipe(uglify())
+  .pipe(rename('transgator.min.js'))
+  .pipe(gulp.dest(paths.root))
 });
 
 gulp.task('watch', function(){
