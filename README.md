@@ -2,6 +2,12 @@
 
 Transgator is a tiny (1.4kb minified) translation library that has no dependencies and is pretty easy to use and implement. Browser support should be IE9+ and the usual browsers that don't suck.
 
+## Installing
+
+Add a `<script>` tag to your `<head>` with a reference to `transgator.min.js`.
+
+Wasn't that easy?
+
 ## Documentation
 
 #### Translating the content of an element
