@@ -1,6 +1,5 @@
 var gulp    = require('gulp'),
     uglify  = require('gulp-uglify'),
-    plumber = require('gulp-plumber'),
     rename  = require('gulp-rename');
 
 var paths = {

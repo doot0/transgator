@@ -15,7 +15,11 @@
     "0-dep",
     "translation"
   ],
-  "author": "twitter.com/doot0, github.com/zacharynevin",
+  "author": "doot0 <doot@doot0.co.uk>",
+  "contributors" : [{
+    "name": "Zachary Nevin",
+    "email": "zach@thegraduate.com.hk"
+  }],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/doot0/transgator/issues"

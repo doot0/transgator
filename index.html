@@ -3,11 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>transgator test</title>
-    <script src="/src/transgator.js"></script>
+    <script src="/dist/transgator.min.js"></script>
+    <style media="screen">
+      *{
+        font-family: sans-serif;
+      }
+    </style>
   </head>
   <body>
     <div data-i18n="testkey">hello, i am default content</div>
     <input type="button" name="name" data-i18n="attr_i18n_1key|value" value="1 attribu">
+
+    <div data-i18n="innertext|attrib" attrib="translate me!">
+      translate me!
+    </div>
+
+    <div data-i18n="innertext2|attrib1|attrib2" attrib1="default1" attrib2="default2">
+      default
+    </div>
 
     <script>
       var i18n_cfg = {
