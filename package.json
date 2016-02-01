@@ -16,18 +16,22 @@
     "translation"
   ],
   "author": "doot0 <doot@doot0.co.uk>",
-  "contributors" : [{
-    "name": "Zachary Nevin",
-    "email": "zachary@thegraduate.com.hk"
-  }],
+  "contributors": [
+    {
+      "name": "Zachary Nevin",
+      "email": "zachary@thegraduate.com.hk"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/doot0/transgator/issues"
   },
   "homepage": "https://github.com/doot0/transgator#readme",
   "devDependencies": {
+    "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.5.1"
+    "gulp-uglify": "^1.5.1",
+    "run-sequence": "^1.1.5"
   }
 }
