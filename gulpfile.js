@@ -1,31 +1,32 @@
-var gulp    = require('gulp'),
-    uglify  = require('gulp-uglify'),
-    rename  = require('gulp-rename');
+const gulp          = require('gulp'),
+      uglify        = require('gulp-uglify'),
+      rename        = require('gulp-rename'),
+      runSequence   = require('run-sequence'),
+      del           = require('del');
 
-var paths = {
+const paths = {
   src : './src/transgator.js',
-  dist: './dist/',
-  root: './'
+  dist: './dist/'
 };
 
-gulp.task('js', function(){
-  gulp
-  .src(paths.src)
-  .pipe(uglify())
-  .pipe(rename('transgator.min.js'))
-  .pipe(gulp.dest(
-    paths.dist
-  ))
+gulp.task('clean', function() {
+  del(['./dist/**/*']).then(paths => {
+  	console.log('Cleaned files and folders:\n', paths.join('\n'));
+  });;
 });
 
-gulp.task('build', function(){
-  gulp
-  .src(paths.src)
-  .pipe(uglify())
-  .pipe(rename('transgator.min.js'))
-  .pipe(gulp.dest(paths.root))
+gulp.task('build', () => {
+  gulp.src(paths.src)
+    .pipe(gulp.dest( paths.dist ))
+    .pipe(uglify())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest( paths.dist ));
 });
 
-gulp.task('watch', function(){
+gulp.task('watch', () => {
   gulp.watch(paths.src, ['js']);
-})
+});
+
+gulp.task('default', (cb) => {
+  runSequence('clean', ['build'], 'watch', cb);
+});
